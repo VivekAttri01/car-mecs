@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, Card, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -18,12 +17,14 @@ function AuthPage() {
 
     try {
       if (isRegister) {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        navigate('/register', { state: { userId: user.uid, email: user.email } });
+        // Register the user
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert('Registration successful! Please log in.');
+        setIsRegister(false); // Switch to login mode
       } else {
+        // Login the user
         await signInWithEmailAndPassword(auth, email, password);
-        navigate('/');
+        navigate('/'); // Redirect to the homepage after login
       }
     } catch (err) {
       setError(err.message);
@@ -39,15 +40,41 @@ function AuthPage() {
           </Typography>
           {error && <Typography color="error" align="center" sx={{ marginBottom: 2 }}>{error}</Typography>}
           <form onSubmit={handleSubmit}>
-            <TextField label="Email" type="email" fullWidth margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <TextField label="Password" type="password" fullWidth margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <TextField 
+              label="Email" 
+              type="email" 
+              fullWidth 
+              margin="normal" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+            />
+            <TextField 
+              label="Password" 
+              type="password" 
+              fullWidth 
+              margin="normal" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required 
+            />
             <Box textAlign="center" mt={3}>
-              <Button type="submit" variant="contained" color="primary" size="large" sx={{ textTransform: 'none' }}>
+              <Button 
+                type="submit" 
+                variant="contained" 
+                color="primary" 
+                size="large" 
+                sx={{ textTransform: 'none' }}
+              >
                 {isRegister ? 'Register' : 'Login'}
               </Button>
             </Box>
           </form>
-          <Typography align="center" sx={{ marginTop: 2, cursor: 'pointer', color: '#1a73e8' }} onClick={() => setIsRegister(!isRegister)}>
+          <Typography 
+            align="center" 
+            sx={{ marginTop: 2, cursor: 'pointer', color: '#1a73e8' }} 
+            onClick={() => setIsRegister(!isRegister)}
+          >
             {isRegister ? 'Already have an account? Login here.' : "Don't have an account? Register now."}
           </Typography>
         </CardContent>

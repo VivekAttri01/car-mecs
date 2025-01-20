@@ -6,21 +6,21 @@ import {
   Typography,
   Card,
   CardContent,
-  Button,
-  AppBar,
-  Toolbar,
+  Button
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import Navbar from './Navbar';
+
 
 function HomePage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const auth = getAuth();
-
+  const isLoggedIn = userData !== null;
   useEffect(() => {
     const fetchUserData = async (user) => {
       if (user) {
@@ -36,14 +36,14 @@ function HomePage() {
       if (user) {
         fetchUserData(user);
       } else {
-        navigate('/auth');
+        navigate('/');
       }
     });
   }, [auth, navigate]);
 
   const handleLogout = () => {
     signOut(auth)
-      .then(() => navigate('/auth'))
+      .then(() => navigate('/'))
       .catch((err) => console.error('Error during logout:', err));
   };
 
@@ -58,20 +58,11 @@ function HomePage() {
 
   return (
     <>
-      {/* Navigation Bar */}
-      <AppBar position="static" sx={{ bgcolor: '#1a73e8' }}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{ flexGrow: 1, textAlign: 'left', fontWeight: 'bold' }}
-          >
-            Car-Mecs
-          </Typography>
-          <Button color="inherit" onClick={handleLogout}>
+    <Navbar isLoggedIn={isLoggedIn} />
+    
+      <Button color="inherit" onClick={handleLogout}>
             Logout
           </Button>
-        </Toolbar>
-      </AppBar>
 
       {/* Main Content */}
       <Box

@@ -1,0 +1,189 @@
+/* Base Variables */
+:root {
+    --first-color: #0078d7;
+    --first-color-lighter: #5aaafa;
+    --first-color-second: #003d73;
+    --input-color: #f7f9fc;
+    --text-color: #333;
+    --text-color-light: #666;
+    --title-color: #222;
+    --body-font: 'Arial', sans-serif;
+    --h1-font-size: 2.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.75rem;
+    --font-medium: 500;
+    --font-bold: 700;
+    --mb-0-25: 0.25rem;
+    --mb-0-75: 0.75rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-3: 3rem;
+  }
+  
+  /* General */
+  body {
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    line-height: 1.6;
+  }
+  
+  h1, h3 {
+    margin: 0;
+  }
+  
+  /* CONTACT ME */
+  .contact-section {
+    padding: 3rem 1.5rem;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-bold);
+    color: var(--title-color);
+    margin-bottom: var(--mb-1-5);
+  }
+  
+  .section-subtitle {
+    font-size: var(--normal-font-size);
+    color: var(--text-color-light);
+    margin-bottom: var(--mb-3);
+  }
+  
+  .contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--mb-3);
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* Contact Links */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mb-2);
+  }
+  
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: var(--mb-0-75);
+    padding: 1rem;
+    background-color: var(--input-color);
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-info:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .contact-icon {
+    font-size: 2rem;
+    color: var(--first-color);
+  }
+  
+  .contact-title {
+    font-size: var(--h3-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+  }
+  
+  .contact-subtitle {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--mb-2);
+  }
+  
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-label {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    margin-bottom: var(--mb-0-25);
+  }
+  
+  .contact-input {
+    padding: 0.75rem;
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: var(--input-color);
+  }
+  
+  .contact-input:focus {
+    border-color: var(--first-color);
+    box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
+  }
+  
+  .message {
+    resize: none;
+  }
+  
+  .alert-style {
+    display: none;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: var(--small-font-size);
+    text-align: center;
+  }
+  
+  /* Submit Button */
+  .button {
+    padding: 0.75rem 2rem;
+    font-size: var(--normal-font-size);
+    color: #fff;
+    background-color: var(--first-color);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: var(--first-color-lighter);
+    transform: translateY(-3px);
+  }
+  
+  .button-icon {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-inputs {
+      grid-template-columns: 1fr;
+    }
+  }
+  

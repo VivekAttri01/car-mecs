@@ -46,7 +46,7 @@ function PaymentPage() {
           await setDoc(doc(db, 'users', formData.email), cleanData);
 
           // Redirect to the home page with payment details
-          navigate('/', {
+          navigate('/home', {
             state: {
               paymentStatus: 'Success',
               validityEndDate: validityEndDate.toISOString(),

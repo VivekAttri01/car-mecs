@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, Card, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import Navbar from './Navbar';
 
 function AuthPage() {
   const [isRegister, setIsRegister] = useState(false);
@@ -24,7 +25,7 @@ function AuthPage() {
       } else {
         // Login the user
         await signInWithEmailAndPassword(auth, email, password);
-        navigate('/'); // Redirect to the homepage after login
+        navigate('/home'); // Redirect to the homepage after login
       }
     } catch (err) {
       setError(err.message);
@@ -32,7 +33,10 @@ function AuthPage() {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100vh" bgcolor="#f5f5f5">
+    <>
+      <Navbar />
+  
+    <Box display="flex" justifyContent="center" alignItems="center" height="100vh" bgcolor="#e0e0e0">
       <Card sx={{ width: 400, padding: 3, boxShadow: 3 }}>
         <CardContent>
           <Typography variant="h4" align="center" sx={{ fontWeight: 'bold', color: '#1a73e8', marginBottom: 3 }}>
@@ -80,6 +84,7 @@ function AuthPage() {
         </CardContent>
       </Card>
     </Box>
+    </>
   );
 }
 

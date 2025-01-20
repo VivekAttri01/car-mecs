@@ -1,12 +1,14 @@
-
-
 import React, { useEffect, useState } from 'react';
 import {
   Box,
   Typography,
   Card,
   CardContent,
-  Button
+  Button,
+  AppBar,
+  Toolbar,
+  ThemeProvider,
+  createTheme,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
@@ -14,13 +16,13 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Navbar from './Navbar';
 
-
 function HomePage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const auth = getAuth();
   const isLoggedIn = userData !== null;
+
   useEffect(() => {
     const fetchUserData = async (user) => {
       if (user) {
@@ -56,22 +58,43 @@ function HomePage() {
     ? new Date(userData.validityEndDate) > new Date()
     : false;
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#1a73e8',
+      },
+      secondary: {
+        main: '#ff4081',
+      },
+      background: {
+        default: '#121212',
+        paper: '#1e1e1e',
+      },
+      text: {
+        primary: '#ffffff',
+        secondary: '#b0bec5',
+      },
+    },
+  });
+
   return (
-    <>
-    <Navbar isLoggedIn={isLoggedIn} />
-    
-      <Button color="inherit" onClick={handleLogout}>
+    <ThemeProvider theme={darkTheme}>
+      <Navbar isLoggedIn={isLoggedIn} />
+      <AppBar position="static" color="primary">
+        <Toolbar sx={{ justifyContent: 'flex-end' }}>
+          <Button variant="contained" color="secondary" onClick={handleLogout}>
             Logout
           </Button>
-
-      {/* Main Content */}
+        </Toolbar>
+      </AppBar>
       <Box
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
         height="100vh"
-        bgcolor="#e3f2fd"
+        bgcolor="background.default"
       >
         <Card sx={{ width: 500, padding: 2, boxShadow: 3 }}>
           <CardContent>
@@ -82,17 +105,17 @@ function HomePage() {
                     <Typography
                       variant="h5"
                       align="center"
-                      sx={{ color: '#1a73e8', marginBottom: 2 }}
+                      sx={{ color: 'primary.main', marginBottom: 2 }}
                     >
                       Welcome back, {userData.name}!
                     </Typography>
-                    <Typography align="center" sx={{ color: '#666', marginBottom: 2 }}>
+                    <Typography align="center" sx={{ color: 'text.secondary', marginBottom: 2 }}>
                       Payment Status: {userData.paymentStatus}
                     </Typography>
-                    <Typography align="center" sx={{ color: '#666', marginBottom: 2 }}>
+                    <Typography align="center" sx={{ color: 'text.secondary', marginBottom: 2 }}>
                       Validity Ends: {new Date(userData.validityEndDate).toDateString()}
                     </Typography>
-                    <Typography align="center" sx={{ color: '#444', marginBottom: 4 }}>
+                    <Typography align="center" sx={{ color: 'text.primary', marginBottom: 4 }}>
                       Thank you for using Car-Mecs, your one-stop solution for car servicing and maintenance!
                     </Typography>
                   </>
@@ -101,7 +124,7 @@ function HomePage() {
                     <Typography
                       variant="h5"
                       align="center"
-                      sx={{ color: '#ff0000', marginBottom: 2 }}
+                      sx={{ color: '#ff5252', marginBottom: 2 }}
                     >
                       No payment record found. Please register and make a payment.
                     </Typography>
@@ -121,7 +144,7 @@ function HomePage() {
               <>
                 <Typography
                   align="center"
-                  sx={{ color: '#ff0000', marginBottom: 2 }}
+                  sx={{ color: '#ff5252', marginBottom: 2 }}
                 >
                   No user data found. Please register and make a payment.
                 </Typography>
@@ -139,9 +162,7 @@ function HomePage() {
           </CardContent>
         </Card>
       </Box>
-
-      {/* Footer */}
-      <Box bgcolor="#1a73e8" py={4} color="white">
+      <Box bgcolor="primary.main" py={4} color="white">
         <Box display="flex" flexDirection="column" alignItems="center">
           <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
             Contact Me
@@ -168,7 +189,7 @@ function HomePage() {
           </Box>
         </Box>
       </Box>
-    </>
+    </ThemeProvider>
   );
 }
 

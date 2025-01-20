@@ -60,83 +60,85 @@ function MainPage() {
     }, []);
 
     return (
-        <>
-            <Navbar />
-            <Box>
-                {/* Hero Section */}
-                <Box 
-                    sx={{ 
-                        height: '90vh', 
-                        backgroundImage: `url(${image1})`, 
-                        backgroundSize: 'cover', 
-                        backgroundPosition: 'center', 
-                        display: 'flex', 
-                        flexDirection: 'column', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
-                        color: '#ffffff', 
-                        textAlign: 'center' 
-                    }}
-                >
-                    <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
-                        {quotes[currentQuote]} 
-                    </Typography>
-                    <Typography variant="h6" sx={{ mb: 4 }}>
-                        Experience Professional Auto Care 
-                    </Typography>
-                    <Stack direction="row" spacing={2}> 
-                        <Button 
-                            variant="contained"
-                            color="secondary"
-                            onClick={() => navigate('/auth')}
-                            sx={{
-                                backgroundColor: '#fff',
-                                color: '#1a73e8',
-                                '&:hover': { backgroundColor: '#f0f0f0' },
-                            }}
-                        >
-                            Book Appointment
-                        </Button>
-                    </Stack>
-                </Box>
-        
-                {/* Services Section */}
-                <Box sx={{ padding: 4 }}>
-                    <Typography variant="h4" align="center" sx={{ fontWeight: 'bold', mb: 4 }}>
-                        Our Services
-                    </Typography>
-                    <Grid container spacing={4}>
-                        {[
-                            { title: "Car Service Plans", text: "Choose from flexible service plans tailored to your needs." },
-                            { title: "Seamless Payments", text: "Pay securely with Razorpay and get instant confirmations." },
-                            { title: "Personalized Dashboard", text: "Track your payment status and service validity in real time." },
-                        ].map((service, index) => (
-                            <Grid key={index} item xs={12} sm={4}>
-                                <Typography variant="h6" align="center" sx={{ fontWeight: 'bold' }}>
-                                    {service.title}
-                                </Typography>
-                                <Typography align="center">{service.text}</Typography>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-                <WhyChooseUsSection />
-                {/* Footer */}
-                <Box sx={{ backgroundColor: '#1a73e8', color: '#ffffff', padding: 2, textAlign: 'center' }}>
-                    <Typography>
-                        &copy; {new Date().getFullYear()} Car-Mecs |
-                        <Button onClick={() => navigate('/about')} sx={{ color: '#ffffff', textTransform: 'none' }}>
-                            About Us
-                        </Button>
-                        |
-                        <Button onClick={() => navigate('/contact')} sx={{ color: '#ffffff', textTransform: 'none' }}>
-                            Contact Us
-                        </Button>
-                    </Typography>
-                </Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Navbar />
+        <Box sx={{ flexGrow: 1 }}>
+            {/* Hero Section */}
+            <Box
+                sx={{
+                    minHeight: '90vh', // Ensures it doesn't occupy the full viewport height
+                    backgroundImage: `url(${image1})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#ffffff',
+                    textAlign: 'center',
+                }}
+            >
+                <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
+                    {quotes[currentQuote]}
+                </Typography>
+                <Typography variant="h6" sx={{ mb: 4 }}>
+                    Experience Professional Auto Care
+                </Typography>
+                <Stack direction="row" spacing={2}>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => navigate('/auth')}
+                        sx={{
+                            backgroundColor: '#fff',
+                            color: '#1a73e8',
+                            '&:hover': { backgroundColor: '#f0f0f0' },
+                        }}
+                    >
+                        Book Appointment
+                    </Button>
+                </Stack>
             </Box>
-        </>
-    );
+
+            {/* Services and Why Choose Us Sections */}
+            <Box sx={{ padding: 4 }}>
+                <Typography variant="h4" align="center" sx={{ fontWeight: 'bold', mb: 4 }}>
+                    Our Services
+                </Typography>
+                <Grid container spacing={4}>
+                    {[
+                        { title: "Car Service Plans", text: "Choose from flexible service plans tailored to your needs." },
+                        { title: "Seamless Payments", text: "Pay securely with Razorpay and get instant confirmations." },
+                        { title: "Personalized Dashboard", text: "Track your payment status and service validity in real time." },
+                    ].map((service, index) => (
+                        <Grid key={index} item xs={12} sm={4}>
+                            <Typography variant="h6" align="center" sx={{ fontWeight: 'bold' }}>
+                                {service.title}
+                            </Typography>
+                            <Typography align="center">{service.text}</Typography>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Box>
+            <WhyChooseUsSection />
+        </Box>
+
+        {/* Footer */}
+        <Box sx={{ backgroundColor: '#1a73e8', color: '#ffffff', padding: 2, textAlign: 'center' }}>
+            <Typography>
+                &copy; {new Date().getFullYear()} Car-Mecs |
+                <Button onClick={() => navigate('/about')} sx={{ color: '#ffffff', textTransform: 'none' }}>
+                    About Us
+                </Button>
+                |
+                <Button onClick={() => navigate('/contact')} sx={{ color: '#ffffff', textTransform: 'none' }}>
+                    Contact Us
+                </Button>
+            </Typography>
+        </Box>
+    </Box>
+);
+
 }
 
 export default MainPage;

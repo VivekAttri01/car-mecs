@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    overflow: hidden; /* Prevent scrolling */
+    /* overflow: hidden; Prevent scrolling */
   }
   
   .about-us-container {

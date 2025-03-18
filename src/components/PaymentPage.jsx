@@ -34,12 +34,14 @@ function PaymentPage() {
           const cleanData = {
             name: formData.name || '',
             email: formData.email || '',
-            contact: formData.contact || '', // Ensure contact is optional
             servicePeriod: formData.servicePeriod || '',
             paymentDate: new Date().toISOString(),
             validityEndDate: validityEndDate.toISOString(),
             paymentStatus: 'Success',
             transactionId: response.razorpay_payment_id,
+            mobileNumber: formData.mobileNumber,
+            carModel: formData.carModel,
+            carNumber: formData.carNumber.toUpperCase(),
           };
 
           // Save user details and payment status to Firestore
@@ -51,6 +53,8 @@ function PaymentPage() {
               paymentStatus: 'Success',
               validityEndDate: validityEndDate.toISOString(),
               transactionId: response.razorpay_payment_id,
+              carModel: formData.carModel,
+              carNumber: formData.carNumber.toUpperCase(),
             },
           });
         } catch (error) {

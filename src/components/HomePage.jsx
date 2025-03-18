@@ -115,6 +115,12 @@ function HomePage() {
                     <Typography align="center" sx={{ color: 'text.secondary', marginBottom: 2 }}>
                       Validity Ends: {new Date(userData.validityEndDate).toDateString()}
                     </Typography>
+                    <Typography align="center" sx={{ color: 'text.secondary', marginBottom: 2 }}>
+                      Car Model: {userData.carModel}:{userData.carNumber}
+                    </Typography>
+                    <Typography align="center" sx={{ color: 'text.secondary', marginBottom: 2 }}>
+                    
+                    </Typography>
                     <Typography align="center" sx={{ color: 'text.primary', marginBottom: 4 }}>
                       Thank you for using Car-Mecs, your one-stop solution for car servicing and maintenance!
                     </Typography>

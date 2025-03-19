@@ -143,7 +143,7 @@ function PaymentPage() {
         flexDirection="column"
         alignItems="center"
         mt={4}
-        bgcolor="#1a73e8"
+        bgcolor="#808080"
         color="white"
         padding={2}
         width="100%"
@@ -156,7 +156,8 @@ function PaymentPage() {
             <a
               href="./assets/pdf/Terms and Conditions.pdf"
               className="footer_link"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: 'white' }}
             >
               Terms & Conditions
@@ -166,7 +167,8 @@ function PaymentPage() {
             <a
               href="./assets/pdf/Cancellation and Refund.pdf"
               className="footer_link"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: 'white' }}
             >
               Cancellation Policy
@@ -176,10 +178,22 @@ function PaymentPage() {
             <a
               href="./assets/pdf/Shipping and Delivery.pdf"
               className="footer_link"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ textDecoration: 'none', color: 'white' }}
             >
               Shipping and Delivery
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Privacy Policy.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Privacy Policy
             </a>
           </li>
         </ul>

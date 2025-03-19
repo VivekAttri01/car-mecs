@@ -124,7 +124,7 @@ function MainPage() {
         </Box>
 
         {/* Footer */}
-        <Box sx={{ backgroundColor: '#1a73e8', color: '#ffffff', padding: 2, textAlign: 'center' }}>
+        <Box sx={{ backgroundColor: '#808080', color: '#ffffff', padding: 2, textAlign: 'center' }}>
             <Typography>
                 &copy; {new Date().getFullYear()} Car-Mecs |
                 <Button onClick={() => navigate('/about')} sx={{ color: '#ffffff', textTransform: 'none' }}>
@@ -135,6 +135,52 @@ function MainPage() {
                     Contact Us
                 </Button>
             </Typography>
+            <ul style={{ listStyleType: 'none', padding: 0, textAlign: 'center' }}>
+          <li>
+            <a
+              href="./assets/pdf/Terms and Conditions.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Terms & Conditions
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Cancellation and Refund.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Cancellation Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Shipping and Delivery.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Shipping and Delivery
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Privacy Policy.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Privacy Policy
+            </a>
+          </li>
+        </ul>
         </Box>
     </Box>
 );

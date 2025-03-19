@@ -168,8 +168,54 @@ function HomePage() {
           </CardContent>
         </Card>
       </Box>
-      <Box bgcolor="primary.main" py={4} color="white">
+      <Box bgcolor="#808080" py={4} color="white">
         <Box display="flex" flexDirection="column" alignItems="center">
+        <ul style={{ listStyleType: 'none', padding: 0, textAlign: 'center' }}>
+          <li>
+            <a
+              href="./assets/pdf/Terms and Conditions.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Terms & Conditions
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Cancellation and Refund.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Cancellation Policy
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Shipping and Delivery.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Shipping and Delivery
+            </a>
+          </li>
+          <li>
+            <a
+              href="./assets/pdf/Privacy Policy.pdf"
+              className="footer_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'white' }}
+            >
+              Privacy Policy
+            </a>
+          </li>
+        </ul>
           <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
             Contact Me
           </Typography>
